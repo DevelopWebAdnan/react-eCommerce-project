@@ -13,10 +13,10 @@ function App() {
         <Navbar></Navbar>
         <Banner></Banner>
       </header>
-      <main>
+      <main className='max-w-7xl mx-auto'>
         <Products></Products>
       </main>
-      <footer>
+      <footer className='max-w-7xl mx-auto'>
         <Footer></Footer>
       </footer>
     </div>

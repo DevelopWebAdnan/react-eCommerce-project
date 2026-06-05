@@ -4,7 +4,7 @@ import { FaInstagram, FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className="p-10">
+        <div className="py-10 ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div>
                     <h3 className="text-xl font-bold mb-4">CONTACT INFO</h3>

@@ -2,7 +2,7 @@
 const Banner = () => {
 
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto my-8">
             <div className="text-center mb-5">
             <h1 className="text-5xl font-bold mb-6">Look good, feel good</h1>
             <p>Take this opportunity to enhance beauty with products that stand out in the marketplace.</p>
