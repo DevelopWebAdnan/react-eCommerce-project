@@ -4,8 +4,8 @@ import { FaInstagram, FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className="py-10 ">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="py-10 px-4 md:px-6 lg:px-10 text-center md:text-left bg-blue-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                 <div>
                     <h3 className="text-xl font-bold mb-4">CONTACT INFO</h3>
                     <div className="mb-2">
@@ -24,7 +24,7 @@ const Footer = () => {
                         <h4 className="font-semibold">WORKING DAYS/HOURS: </h4>
                         <p>Mon - Sun / 9:00 AM - 8:00 PM</p>
                     </div>
-                    <div className="flex gap-2 mb-8">
+                    <div className="flex gap-2 mb-8 justify-center md:justify-start">
                         <FaFacebook></FaFacebook>
                         <FaTwitter></FaTwitter>
                         <FaInstagram></FaInstagram>
