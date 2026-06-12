@@ -1,6 +1,6 @@
 import { CiShoppingCart } from "react-icons/ci";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, handleAddToCart }) => {
     const { name, img, price, ratings, ratingsCount } = product;
 
     return (
@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
                     </div>
                     <span className="text-xl font-semibold">${price}.00</span>
                     <div className="card-actions">
-                        <button className="btn btn-primary"><CiShoppingCart></CiShoppingCart> ADD TO CART</button>
+                        <button onClick={() => handleAddToCart(product)} className="btn btn-primary"><CiShoppingCart></CiShoppingCart> ADD TO CART</button>
                     </div>
                 </div>
             </div>
