@@ -54,20 +54,24 @@ const Products = () => {
                 <h2 className="font-bold text-xl">FEATURED PRODUCTS: {products.length}</h2>
             </div>
 
-            <Cart
-                cart={cart}
-                handleRemoveFromCart={handleRemoveFromCart}
-            ></Cart>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4">
-                {
-                    products.map(product => <ProductCard
-                        key={product.id}
-                        product={product}
-                        handleAddToCart={handleAddToCart}
-                    ></ProductCard>)
-                }
+            <div className="md:flex gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {
+                        products.map(product => <ProductCard
+                            key={product.id}
+                            product={product}
+                            handleAddToCart={handleAddToCart}
+                        ></ProductCard>)
+                    }
+                </div>
+                <div className="mt-5">
+                    <Cart
+                        cart={cart}
+                        handleRemoveFromCart={handleRemoveFromCart}
+                    ></Cart>
+                </div>
             </div>
+
         </div>
     );
 };
