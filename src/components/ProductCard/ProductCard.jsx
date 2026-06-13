@@ -27,7 +27,11 @@ const ProductCard = ({ product, handleAddToCart }) => {
                     </div>
                     <span className="text-xl font-semibold">${price}.00</span>
                     <div className="card-actions">
-                        <button onClick={() => handleAddToCart(product)} className="btn btn-primary"><CiShoppingCart></CiShoppingCart> ADD TO CART</button>
+                        <button onClick={() => handleAddToCart(product)} className="btn btn-primary"
+                        ><CiShoppingCart
+                            className="text-2xl"
+                        ></CiShoppingCart> ADD TO CART
+                        </button>
                     </div>
                 </div>
             </div>
