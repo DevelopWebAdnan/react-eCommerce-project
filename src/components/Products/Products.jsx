@@ -54,8 +54,8 @@ const Products = () => {
                 <h2 className="font-bold text-xl">FEATURED PRODUCTS: {products.length}</h2>
             </div>
 
-            <div className="md:flex gap-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex gap-4">
+                <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         products.map(product => <ProductCard
                             key={product.id}
@@ -64,7 +64,7 @@ const Products = () => {
                         ></ProductCard>)
                     }
                 </div>
-                <div className="mt-5">
+                <div className="w-1/4">
                     <Cart
                         cart={cart}
                         handleRemoveFromCart={handleRemoveFromCart}
