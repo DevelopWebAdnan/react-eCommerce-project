@@ -5,7 +5,7 @@ const ProductCard = ({ product, handleAddToCart }) => {
 
     return (
         <div>
-            <div className="card bg-base-100 shadow-sm">
+            <div className="card bg-blue-100 shadow-sm">
                 <figure className="h-64">
                     <img
                         className="w-full h-full object-cover"
