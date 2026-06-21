@@ -9,17 +9,17 @@ import Navbar from '../Navbar/Navbar';
 
 const Root = () => {
     return (
-        <div>
-            <header>
+        <div className='max-w-6xl mx-auto'>
+            {/* <header className='max-w-7xl mx-auto'> */}
                 <Navbar></Navbar>
                 {/* <DaisyNav></DaisyNav> */}
-            </header>
-            <main className='max-w-7xl mx-auto'>
+            {/* </header> */}
+            {/* <main className='max-w-7xl mx-auto'> */}
                 <Outlet></Outlet>
-            </main>
-            <footer className='max-w-7xl mx-auto'>
+            {/* </main> */}
+            {/* <footer className='max-w-7xl mx-auto'> */}
                 <Footer></Footer>
-            </footer>
+            {/* </footer> */}
         </div>
     );
 };

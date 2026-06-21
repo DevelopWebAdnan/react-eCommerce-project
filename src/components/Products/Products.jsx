@@ -51,7 +51,7 @@ const Products = () => {
     return (
         <div className="my-10">
             <div className="divider py-6">
-                <h2 className="font-bold text-xl">FEATURED PRODUCTS: {products.length}</h2>
+                <h2 className="font-bold text-4xl">FEATURED PRODUCTS: {products.length}</h2>
             </div>
 
             <div className="flex gap-4">
