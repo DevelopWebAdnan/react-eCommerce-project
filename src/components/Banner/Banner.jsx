@@ -2,7 +2,7 @@
 const Banner = () => {
 
     return (
-        <div className=" bg-blue-200 min-h-screen">
+        <div className=" bg-blue-200 p-5">
             <div className="flex flex-col items-center lg:flex-row-reverse lg:justify-around">
                 <div>
                     <img

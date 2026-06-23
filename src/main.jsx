@@ -23,7 +23,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:id',
-        element: <ProductDetail></ProductDetail>
+        element: <ProductDetail></ProductDetail>,
+        loader: () => fetch('/beautyStore.json')
       },
       // {
       //   path: '/dashboard',

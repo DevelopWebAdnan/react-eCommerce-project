@@ -1,7 +1,8 @@
-import { CiShoppingCart } from "react-icons/ci";
+// import { CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, handleAddToCart }) => {
+// const ProductCard = ({ product, handleAddToCart }) => {
+const ProductCard = ({ product }) => {
     const { id, name, img, price, ratings, ratingsCount } = product;
 
     return (
@@ -28,13 +29,13 @@ const ProductCard = ({ product, handleAddToCart }) => {
                             <p>{ratingsCount}</p>
                         </div>
                         <span className="text-xl font-semibold">${price}.00</span>
-                        <div className="card-actions">
+                        {/* <div className="card-actions">
                             <button onClick={() => handleAddToCart(product)} className="btn btn-primary"
                             ><CiShoppingCart
                                 className="text-2xl"
                             ></CiShoppingCart> ADD TO CART
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
