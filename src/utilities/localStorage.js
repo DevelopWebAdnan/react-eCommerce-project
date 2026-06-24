@@ -22,9 +22,15 @@ const removeFromLS = id => {
 
 const addToLS = id => {
     const cart = getStoredCart();
-    cart.push(id);
-    // save to local storage
-    saveCartToLS(cart);
+    if (cart.includes(id)) {
+        // already exists, do not add it
+        console.log(id, 'already exists in the cart');
+    }
+    else {
+        cart.push(id);
+        // save to local storage
+        saveCartToLS(cart);
+    }
 }
 
 export { addToLS, getStoredCart, removeFromLS }

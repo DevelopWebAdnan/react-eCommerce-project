@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { addToLS, getStoredCart, removeFromLS } from "../../utilities/localStorage";
+import { getStoredCart, removeFromLS } from "../../utilities/localStorage";
 import Cart from "../Cart/Cart";
 
 const Products = () => {
@@ -34,11 +34,11 @@ const Products = () => {
         }
     }, [products])
 
-    const handleAddToCart = product => {
-        const newCart = [...cart, product];
-        setCart(newCart);
-        addToLS(product.id);
-    }
+    // const handleAddToCart = product => {
+    //     const newCart = [...cart, product];
+    //     setCart(newCart);
+    //     addToLS(product.id);
+    // }
 
     const handleRemoveFromCart = id => {
         // visual cart remove
@@ -60,7 +60,7 @@ const Products = () => {
                         products.map(product => <ProductCard
                             key={product.id}
                             product={product}
-                            handleAddToCart={handleAddToCart}
+                            // handleAddToCart={handleAddToCart}
                         ></ProductCard>)
                     }
                 </div>
