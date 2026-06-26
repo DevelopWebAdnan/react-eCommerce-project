@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const getStoredCart = () => {
     const storedCartString = localStorage.getItem('cart');
     if (storedCartString) {
@@ -11,6 +13,7 @@ const getStoredCart = () => {
 const saveCartToLS = cart => {
     const cartStringified = JSON.stringify(cart);
     localStorage.setItem('cart', cartStringified);
+    toast("This product has been added to your cart!");
 }
 
 const removeFromLS = id => {

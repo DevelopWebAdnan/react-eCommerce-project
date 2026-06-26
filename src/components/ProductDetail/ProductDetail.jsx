@@ -67,7 +67,7 @@ const ProductDetail = () => {
             </button>
             {/* <button className="btn btn-accent btn-outline mr-4">Add To Cart</button> */}
 
-            <button className="btn btn-accent">Add to Wish List</button>
+            {/* <button className="btn btn-accent">Add to Wish List</button> */}
 
             {/* {
                 cart.map(cartItemId => <Cart
