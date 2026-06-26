@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { getStoredCart, removeFromLS } from "../../utilities/localStorage";
-import Cart from "../Cart/Cart";
+import { getStoredCart } from "../../utilities/localStorage";
+// import Cart from "../Cart/Cart";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch('/beautyStore.json')
@@ -30,7 +30,7 @@ const Products = () => {
                 }
             }
             console.log(savedCart);
-            setCart(savedCart);
+            // setCart(savedCart);
         }
     }, [products])
 
@@ -40,13 +40,13 @@ const Products = () => {
     //     addToLS(product.id);
     // }
 
-    const handleRemoveFromCart = id => {
-        // visual cart remove
-        const remainingCart = cart.filter(product => product.id !== id);
-        setCart(remainingCart);
-        // remove from LS
-        removeFromLS(id);
-    }
+    // const handleRemoveFromCart = id => {
+    //     // visual cart remove
+    //     const remainingCart = cart.filter(product => product.id !== id);
+    //     setCart(remainingCart);
+    //     // remove from LS
+    //     removeFromLS(id);
+    // }
 
     return (
         <div className="my-10">
@@ -55,7 +55,7 @@ const Products = () => {
             </div>
 
             <div className="flex gap-4">
-                <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         products.map(product => <ProductCard
                             key={product.id}
@@ -64,12 +64,12 @@ const Products = () => {
                         ></ProductCard>)
                     }
                 </div>
-                <div className="w-1/4">
+                {/* <div className="w-1/4">
                     <Cart
                         cart={cart}
                         handleRemoveFromCart={handleRemoveFromCart}
                     ></Cart>
-                </div>
+                </div> */}
             </div>
 
         </div>

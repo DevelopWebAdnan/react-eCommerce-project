@@ -1,9 +1,9 @@
-
 import logo from '../../assets/shopping-cart/shopping-cart-32.png';
 
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 // import Link from "../Link/Link";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -48,9 +48,10 @@ const Navbar = () => {
     // ];
 
     const links = <>
-    <li><a href="">Home</a></li>
-    <li><a href="">Item3</a></li>
+        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/">Home</NavLink></li>
+        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/cart">Cart</NavLink></li>
     </>
+
     return (
         <div className="p-2">
             <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100'>
