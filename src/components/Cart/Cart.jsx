@@ -7,39 +7,47 @@ import { useLoaderData } from "react-router-dom";
 const Cart = () => {
 
     const loadedProducts = useLoaderData();
-    console.log('Loaded products:', loadedProducts );
+    console.log('Loaded products:', loadedProducts);
 
     const [cart, setCart] = useState([]);
-    // const [sort, setSort] = useState('');
+    const [sort, setSort] = useState('');
 
     // load cart from local storage
     useEffect(() => {
-        console.log('called the useEffect', loadedProducts.length);
-        if (loadedProducts.length) {
-            const getCart = getStoredCart();
-            // console.log(getCart, products);
-            console.log('getCart:', getCart);
-            const savedCart = [];
-            for (const cartProductId of getCart) {
-                // console.log('cartProductId:', cartProductId);
-                const productsToBeAddedToCart = loadedProducts.find(loadedProduct => loadedProduct.id === cartProductId);
-                // const productsInCart = products.filter(product => product.id === cartProductId);
-                console.log('productsToBeAddedToCart: ', productsToBeAddedToCart);
-                if (productsToBeAddedToCart) {
-                    savedCart.push(productsToBeAddedToCart);
-                }
-            }
-            console.log('savedCart:', savedCart);
-            setCart(savedCart);
-        }
-        // }, [products])
+        // console.log('called the useEffect', loadedProducts.length);
+        // if (loadedProducts.length) {
+        const getCart = getStoredCart();
+        console.log('getCart:', getCart);
+        // const savedCart = [];
+        // for (const cartProductId of getCart) {
+        // console.log('cartProductId:', cartProductId);
+        // const productsToBeAddedToCart = loadedProducts.find(loadedProduct => loadedProduct.id === cartProductId);
+        const productsToBeAddedToCart = loadedProducts.filter(loadedProduct => getCart.includes(loadedProduct.id));
+        // console.log('productsToBeAddedToCart: ', productsToBeAddedToCart);
+        // if (productsToBeAddedToCart) {
+        //     savedCart.push(productsToBeAddedToCart);
+        // }
+        // }
+        // console.log('savedCart:', savedCart);
+        console.log('productsToBeAddedToCart:', productsToBeAddedToCart);
+        setCart(productsToBeAddedToCart);
+       
     }, [loadedProducts])
 
     console.log('cart', cart);
 
-    // const handleSort = sortType => {
-    //     setSort(sortType);
-    // }
+    const handleSort = sortType => {
+        setSort(sortType);
+        if (sortType === "Price") {
+            const sortedCartProducts = [...cart].sort((a, b) => a.price - b.price);
+            setCart(sortedCartProducts);
+        }
+
+        if (sortType === "Ratings") {
+            const sortedCartProducts = [...cart].sort((a, b) => a.ratings - b.ratings);
+            setCart(sortedCartProducts);
+        }
+    }
 
     const handleRemoveFromCart = id => {
         // visual cart remove
@@ -55,17 +63,17 @@ const Cart = () => {
         < div className="bg-slate-300 p-3" >
             <h3 className="text-xl font-bold text-center my-3">Cart: {cart?.length}</h3>
 
-            {/* <details className="dropdown">
+            <details className="dropdown">
                 <summary className="btn m-1">
                     {
                         sort ? `Sort by: ${sort}` : 'Sort by'
                     }
                 </summary>
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <li onClick={handleSort("Price")}><a>Price</a></li>
-                    <li onClick={handleSort("Ratings")}><a>Ratings</a></li>
+                    <li onClick={() => handleSort("Price")}><a>Price</a></li>
+                    <li onClick={() => handleSort("Ratings")}><a>Ratings</a></li>
                 </ul>
-            </details> */}
+            </details>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                 {
@@ -78,9 +86,9 @@ const Cart = () => {
                                 <figure className="h-64">
                                     {/* <figure> */}
                                     <img
-                            className="h-full w-full object-cover"
-                            src={product?.img}
-                            alt="product image" />
+                                        className="h-full w-full object-cover"
+                                        src={product?.img}
+                                        alt="product image" />
                                     {/* <img className="w-2xs" src={img} alt="image of product" /> */}
                                     {/* <img
                                         className="w-full"

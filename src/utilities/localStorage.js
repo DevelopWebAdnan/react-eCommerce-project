@@ -23,7 +23,7 @@ const removeFromLS = id => {
     // saveCartToLS(remaining);
     const cartStringified = JSON.stringify(remaining);
     localStorage.setItem('cart', cartStringified);
-    toast("This product has been removed from your cart!");
+    toast("A product has been removed from your cart!");
 }
 
 const addToLS = id => {
