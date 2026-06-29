@@ -1,7 +1,6 @@
 import { CiShoppingCart } from "react-icons/ci";
 import { useLoaderData, useParams } from "react-router-dom";
-import { addToLS, getStoredCart } from "../../utilities/localStorage";
-import { useEffect, useState } from "react";
+import { addToLS } from "../../utilities/localStorage";
 
 const ProductDetail = () => {
 
@@ -13,73 +12,73 @@ const ProductDetail = () => {
     // console.log(data, typeof(product.id), typeof(id), typeof(productId));
     console.log('Detail of:', product);
 
-    const { id: currentId, img } = product;
+    const { id: currentId, name, img, price, ratings, ratingsCount } = product;
 
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
 
     // load cart from local storage
-    useEffect(() => {
-        // console.log('called the useEffect', products.length);
-        // if (products.length) {
-        const getCart = getStoredCart();
-        // console.log(getCart, products);
-        console.log('getCart:', getCart);
-        // const savedCart = [];
-        for (const cardProductId of getCart) {
-            console.log('cartProductId:', cardProductId);
-            // const product = products.find(product => product.id === id);
-            // if (product) {
-            // savedCart.push(product);
-            // }
-        }
-        // console.log(savedCart);
-        // setCart(savedCart);
-        // }
-        // }, [products])
-    }, [])
+    // useEffect(() => {
+        
+    //     const getCart = getStoredCart();
+
+    //     console.log('getCart:', getCart);
+       
+    // }, [])
+
+    // console.log('cart', cart);
 
     // const handleAddToCart = product => {
     const handleAddToCart = productId => {
-        const newCart = [...cart, productId];
-        setCart(newCart);
+        // const newCart = [...cart, productId];
+        // setCart(newCart);
         addToLS(productId);
     }
 
-    // const handleRemoveFromCart = id => {
-    //     // visual cart remove
-    //     const remainingCart = cart.filter(product => product.id !== id);
-    //     setCart(remainingCart);
-    //     // remove from LS
-    //     removeFromLS(id);
-    // }
-
     return (
         <div className="my-12">
-            <h2>Book Details: {id}</h2>
-            <img className="w-2xs" src={img} alt="image of product" />
-            <br />
-            <button
+            <h2>Product Details: {id}</h2>
+            {/* <img className="w-2xs" src={img} alt="image of product" />
+            <br /> */}
+            {/* <button
                 onClick={() => handleAddToCart(productId)}
                 className="btn btn-primary mr-4"
             ><CiShoppingCart
                 className="text-2xl"
             ></CiShoppingCart> Add to Cart
-            </button>
-            {/* <button className="btn btn-accent btn-outline mr-4">Add To Cart</button> */}
+            </button> */}
 
-            {/* <button className="btn btn-accent">Add to Wish List</button> */}
-
-            {/* {
-                cart.map(cartItemId => <Cart
-                    key={cartItemId}
-                    cart={cart}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                ></Cart>)
-            } */}
-            {/* <Cart
-                cart={cart}
-                handleRemoveFromCart={handleRemoveFromCart}
-            ></Cart> */}
+            <div className="card bg-blue-100 shadow-sm">
+                {/* <figure className="h-64"> */}
+                <figure>
+                    <img
+                            // className="w-full h-full object-cover"
+                            src={img}
+                            alt="product image" />
+                    {/* <img className="w-2xs" src={img} alt="image of product" /> */}
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">{name}</h2>
+                    <div className="flex justify-between gap-5">
+                        <div className="badge badge-secondary">{ratings}</div>
+                        <div className="rating">
+                            <input type="radio" name="rating-1" className="mask mask-star" aria-label="1 star" />
+                            <input type="radio" name="rating-1" className="mask mask-star" aria-label="2 star" defaultChecked />
+                            <input type="radio" name="rating-1" className="mask mask-star" aria-label="3 star" />
+                            <input type="radio" name="rating-1" className="mask mask-star" aria-label="4 star" />
+                            <input type="radio" name="rating-1" className="mask mask-star" aria-label="5 star" />
+                        </div>
+                        <p>{ratingsCount}</p>
+                    </div>
+                    <span className="text-xl font-semibold">${price}.00</span>
+                    <div className="card-actions">
+                        <button onClick={() => handleAddToCart(productId)} className="btn btn-primary"
+                        ><CiShoppingCart
+                            className="text-2xl"
+                        ></CiShoppingCart> ADD TO CART
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

@@ -10,17 +10,20 @@ const getStoredCart = () => {
     }
 }
 
-const saveCartToLS = cart => {
-    const cartStringified = JSON.stringify(cart);
-    localStorage.setItem('cart', cartStringified);
-    toast("This product has been added to your cart!");
-}
+// const saveCartToLS = cart => {
+//     const cartStringified = JSON.stringify(cart);
+//     localStorage.setItem('cart', cartStringified);
+//     toast("This product has been added to your cart!");
+// }
 
 const removeFromLS = id => {
     const cart = getStoredCart();
     // remove all id
     const remaining = cart.filter(idx => idx !== id);
-    saveCartToLS(remaining);
+    // saveCartToLS(remaining);
+    const cartStringified = JSON.stringify(remaining);
+    localStorage.setItem('cart', cartStringified);
+    toast("This product has been removed from your cart!");
 }
 
 const addToLS = id => {
@@ -32,7 +35,10 @@ const addToLS = id => {
     else {
         cart.push(id);
         // save to local storage
-        saveCartToLS(cart);
+        // saveCartToLS(cart);
+        const cartStringified = JSON.stringify(cart);
+        localStorage.setItem('cart', cartStringified);
+        toast("This product has been added to your cart!");
     }
 }
 

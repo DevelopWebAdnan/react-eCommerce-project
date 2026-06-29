@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { getStoredCart } from "../../utilities/localStorage";
-// import Cart from "../Cart/Cart";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -19,17 +17,17 @@ const Products = () => {
     useEffect(() => {
         console.log('called the useEffect', products.length);
         if (products.length) {
-            const getCart = getStoredCart();
-            console.log(getCart, products);
-            const savedCart = [];
-            for (const id of getCart) {
-                console.log(id);
-                const product = products.find(product => product.id === id);
-                if (product) {
-                    savedCart.push(product);
-                }
-            }
-            console.log(savedCart);
+            // const getCart = getStoredCart();
+            // console.log(getCart, products);
+            // const savedCart = [];
+            // for (const id of getCart) {
+            //     console.log(id);
+            //     const product = products.find(product => product.id === id);
+            //     if (product) {
+            //         savedCart.push(product);
+            //     }
+            // }
+            // console.log(savedCart);
             // setCart(savedCart);
         }
     }, [products])

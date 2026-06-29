@@ -29,13 +29,6 @@ const ProductCard = ({ product }) => {
                             <p>{ratingsCount}</p>
                         </div>
                         <span className="text-xl font-semibold">${price}.00</span>
-                        {/* <div className="card-actions">
-                            <button onClick={() => handleAddToCart(product)} className="btn btn-primary"
-                            ><CiShoppingCart
-                                className="text-2xl"
-                            ></CiShoppingCart> ADD TO CART
-                            </button>
-                        </div> */}
                     </div>
                 </div>
             </div>
