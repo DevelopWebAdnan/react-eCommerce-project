@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import Heading from "../Heading";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -48,8 +49,11 @@ const Products = () => {
 
     return (
         <div className="my-10">
+            <Heading title="Browse products by category"
+                subtitle="Choose your desired product from the available products."
+            ></Heading>
             <div className="divider py-6">
-                <h2 className="font-bold text-4xl">FEATURED PRODUCTS: {products.length}</h2>
+                <h3>FEATURED PRODUCTS: {products.length}</h3>
             </div>
 
             <div className="flex gap-4">
@@ -58,7 +62,7 @@ const Products = () => {
                         products.map(product => <ProductCard
                             key={product.id}
                             product={product}
-                            // handleAddToCart={handleAddToCart}
+                        // handleAddToCart={handleAddToCart}
                         ></ProductCard>)
                     }
                 </div>
