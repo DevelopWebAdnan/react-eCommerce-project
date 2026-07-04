@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import Heading from "../Heading";
+import { useParams } from "react-router-dom";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     // const [cart, setCart] = useState([]);
+    const {category} = useParams();
 
     useEffect(() => {
         fetch('/beautyStore.json')
@@ -49,12 +50,12 @@ const Products = () => {
 
     return (
         <div className="my-10">
-            <Heading title="Browse products by category"
-                subtitle="Choose your desired product from the available products."
-            ></Heading>
+            
             <div className="divider py-6">
                 <h3>FEATURED PRODUCTS: {products.length}</h3>
             </div>
+
+            <p>{category} from products</p>
 
             <div className="flex gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
