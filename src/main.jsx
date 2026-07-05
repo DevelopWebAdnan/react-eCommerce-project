@@ -12,6 +12,7 @@ import Products from './components/Products/Products';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart';
 import { ToastContainer } from 'react-toastify';
+import AllProducts from './components/AllProducts/AllProducts';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         element: <Home></Home>,
         loader: () => fetch('/beautyStore.json'),
         children: [
+          {
+            path: '/',
+            element: <Products></Products>
+          },
           {
             path: '/products/:category',
             element: <Products></Products>
@@ -39,10 +44,11 @@ const router = createBrowserRouter([
       //   path: '/dashboard',
       //   element:
       // }
-      // {
-      //   path: '/products',
-      //   element: <Products></Products>
-      // },
+      {
+        path: '/allProducts',
+        element: <AllProducts></AllProducts>,
+        loader: () => fetch('/beautyStore.json')
+      },
       {
         path: 'cart',
         element: <Cart></Cart>,

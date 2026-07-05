@@ -1,38 +1,57 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     // const [cart, setCart] = useState([]);
-    const {category} = useParams();
+    const { category } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('/beautyStore.json')
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
+                // setProducts(data);
+                if (category) {
+                    const filteredByCategory = [...data].filter(product => product.category === category);
+                    console.log('fileteredByCategory:', filteredByCategory);
+                    setProducts(filteredByCategory);
+                }
+                else {
+                    setProducts(data.slice(0, 6));
+                }
             })
-    }, [])
+    }, [category])
 
     // load cart from local storage
-    useEffect(() => {
-        console.log('called the useEffect', products.length);
-        if (products.length) {
-            // const getCart = getStoredCart();
-            // console.log(getCart, products);
-            // const savedCart = [];
-            // for (const id of getCart) {
-            //     console.log(id);
-            //     const product = products.find(product => product.id === id);
-            //     if (product) {
-            //         savedCart.push(product);
-            //     }
-            // }
-            // console.log(savedCart);
-            // setCart(savedCart);
-        }
-    }, [products])
+    // useEffect(() => {
+    //     console.log('called the useEffect', products.length);
+    //     if (products.length) {
+    //         // //         // const getCart = getStoredCart();
+    //         // //         // console.log(getCart, products);
+    //         // //         // const savedCart = [];
+    //         // //         // for (const id of getCart) {
+    //         // //         //     console.log(id);
+    //         // //         //     const product = products.find(product => product.id === id);
+    //         // //         //     if (product) {
+    //         // //         //         savedCart.push(product);
+    //         // //         //     }
+    //         // //         // }
+    //         // //         // console.log(savedCart);
+    //         // //         // setCart(savedCart);
+    //         // const filteredByCategory = [...products].filter(product => product.category === category);
+    //         // console.log('fileteredByCategory:', filteredByCategory);
+    //         // setProducts(filteredByCategory);
+    //     }
+
+    //     // const filteredByCategory = [...products].filter(product => product.category === category);
+    //     // console.log('fileteredByCategory:', filteredByCategory);
+    //     //     // setProducts(filteredByCategory);
+    // }, [products.length])
+
+    // const filteredByCategory = [...products].filter(product => product.category === category);
+    //     setProducts(filteredByCategory);
 
     // const handleAddToCart = product => {
     //     const newCart = [...cart, product];
@@ -50,14 +69,14 @@ const Products = () => {
 
     return (
         <div className="my-10">
-            
+
             <div className="divider py-6">
                 <h3>FEATURED PRODUCTS: {products.length}</h3>
             </div>
 
             <p>{category} from products</p>
 
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4"> */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         products.map(product => <ProductCard
@@ -67,13 +86,12 @@ const Products = () => {
                         ></ProductCard>)
                     }
                 </div>
-                {/* <div className="w-1/4">
-                    <Cart
-                        cart={cart}
-                        handleRemoveFromCart={handleRemoveFromCart}
-                    ></Cart>
-                </div> */}
-            </div>
+
+                <button
+                    onClick={() => navigate('/allProducts')}
+                    className="btn btn-warning"
+                >View All</button>
+            {/* </div> */}
 
         </div>
     );

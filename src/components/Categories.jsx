@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { noDuplicate } from "../utilities/noDuplicate";
 
 const Categories = ({ categories }) => {
-    console.log(categories);
+    // console.log(categories);
     const uniqueCategories = noDuplicate(categories);
     console.log('uniqueCategories:', uniqueCategories);
     // const {category} = useParams();

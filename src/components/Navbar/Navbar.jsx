@@ -3,7 +3,7 @@ import logo from '../../assets/shopping-cart/shopping-cart-32.png';
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 // import Link from "../Link/Link";
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -68,10 +68,10 @@ const Navbar = () => {
                     {links}
                 </ul>
                 {/* <div> */}
-                <button className="btn text-xl">
+                <Link to="/" className="text-xl">
                     <img src={logo} alt="logo" />
                     <span>FOR OUR BEAUTY</span>
-                </button>
+                </Link>
                 {/* </div> */}
             </nav>
             {/* <ul className="md:flex md:gap-10 text-xl">
