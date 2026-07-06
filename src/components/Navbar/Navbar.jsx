@@ -49,11 +49,12 @@ const Navbar = () => {
 
     const links = <>
         <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/">Home</NavLink></li>
+        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/allProducts">All Products</NavLink></li>
         <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/cart">Cart</NavLink></li>
     </>
 
     return (
-        <div className="p-2">
+        <div className="p-2 mb-4">
             <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100'>
                 <div className="md:hidden text-2xl btn" onClick={() => setOpen(!open)}>
                     {
@@ -69,8 +70,10 @@ const Navbar = () => {
                 </ul>
                 {/* <div> */}
                 <Link to="/" className="text-xl">
+                <div className='flex gap-2'>
                     <img src={logo} alt="logo" />
                     <span>FOR OUR BEAUTY</span>
+                </div>
                 </Link>
                 {/* </div> */}
             </nav>

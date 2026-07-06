@@ -7,8 +7,8 @@ const Banner = () => {
             <div className="flex flex-col items-center lg:flex-row-reverse lg:justify-around">
                 <div>
                     <img
-                        className="rounded-lg shadow-2xl max-w-xl mb-6 lg:mb-0"
-                        src="https://i.ibb.co.com/bjrhL45K/lipstick-1-1.jpg" alt="banner image of lipstick" />
+                        className="rounded-lg shadow-2xl w-full max-w-xl mb-6 lg:mb-0"
+                        src= "https://i.ibb.co.com/bjrhL45K/lipstick-1-1.jpg" alt="banner image of lipstick" />
                 </div>
                 <div>
                     <Heading

@@ -47,11 +47,11 @@ const ProductDetail = () => {
             ></CiShoppingCart> Add to Cart
             </button> */}
 
-            <div className="card bg-blue-100 shadow-sm">
+            <div className="card bg-blue-100 shadow-sm w-96 lg:w-2xl mx-auto">
                 {/* <figure className="h-64"> */}
                 <figure>
                     <img
-                            // className="w-full h-full object-cover"
+                            className="w-full h-full object-cover"
                             src={img}
                             alt="product image" />
                     {/* <img className="w-2xs" src={img} alt="image of product" /> */}
