@@ -60,7 +60,7 @@ const Cart = () => {
     return (
 
 
-        < div className="bg-slate-300 p-3" >
+        < div className="bg-blue-300 p-3" >
             <h3 className="text-xl font-bold text-center my-3">Cart: {cart?.length}</h3>
 
             <details className="dropdown">

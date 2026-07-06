@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { noDuplicate } from "../utilities/noDuplicate";
 
 const Categories = ({ categories }) => {
@@ -6,15 +6,19 @@ const Categories = ({ categories }) => {
     const uniqueCategories = noDuplicate(categories);
     console.log('uniqueCategories:', uniqueCategories);
     // const {category} = useParams();
-    
+
     return (
         <div>
             <div role="tablist" className="tabs tabs-lift tabs-lg">
                 {
                     uniqueCategories.map(uniqueCategory =>
-                        <Link key={uniqueCategory} to={`/products/${uniqueCategory}`} role="tab" className="tab"
+                        <NavLink
+                            key={uniqueCategory}
+                            to={`/products/${uniqueCategory}`}
+                            role="tab"
+                            className={({ isActive }) => `tab ${isActive}? "tab-active" : ""`}
                         >{uniqueCategory}
-                        </Link>)
+                        </NavLink>)
                 }
                 {/* <p>{category}</p> */}
             </div>

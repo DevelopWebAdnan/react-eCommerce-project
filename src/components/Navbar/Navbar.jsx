@@ -48,21 +48,33 @@ const Navbar = () => {
     // ];
 
     const links = <>
-        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/">Home</NavLink></li>
-        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/allProducts">All Products</NavLink></li>
-        <li className='mr-10 px-1 hover:bg-blue-500'><NavLink to="/cart">Cart</NavLink></li>
+        <li className='ml-10 px-1'><NavLink 
+        className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
+        to="/"
+        >Home</NavLink>
+        </li>
+        <li className='ml-10 px-1'><NavLink 
+         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
+         to="/allProducts"
+         >All Products</NavLink>
+         </li>
+        <li className='ml-10 px-1'><NavLink 
+         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
+         to="/cart"
+         >Cart</NavLink>
+         </li>
     </>
 
     return (
-        <div className="p-2 mb-4">
-            <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100'>
+        <div className="p-2 h-16">
+            <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100/30 backdrop-blur-xl fixed z-50'>
                 <div className="md:hidden text-2xl btn" onClick={() => setOpen(!open)}>
                     {
                         open === true ?
                             <AiOutlineClose></AiOutlineClose> : <AiOutlineMenu></AiOutlineMenu>
                     }
                 </div>
-                <ul className={`md:flex duration-1000 absolute ${open ? 'top-16' : '-top-60'} md:static bg-blue-200 items-center`}>
+                <ul className={`md:flex duration-1000 absolute ${open ? 'top-16' : '-top-60'} md:static bg-blue-200/30 items-center`}>
                     {/* {
                         routes.map(route => <Link key={route.id} route={route}></Link>)
                     } */}

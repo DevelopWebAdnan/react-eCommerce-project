@@ -12,17 +12,17 @@ const ProductDetail = () => {
     // console.log(data, typeof(product.id), typeof(id), typeof(productId));
     console.log('Detail of:', product);
 
-    const { id: currentId, name, img, price, ratings, ratingsCount } = product;
+    const { id: currentId, category, name, img, seller, price, ratings, ratingsCount, stock, shipping } = product;
 
     // const [cart, setCart] = useState([]);
 
     // load cart from local storage
     // useEffect(() => {
-        
+
     //     const getCart = getStoredCart();
 
     //     console.log('getCart:', getCart);
-       
+
     // }, [])
 
     // console.log('cart', cart);
@@ -51,13 +51,16 @@ const ProductDetail = () => {
                 {/* <figure className="h-64"> */}
                 <figure>
                     <img
-                            className="w-full h-full object-cover"
-                            src={img}
-                            alt="product image" />
+                        className="w-full h-full object-cover"
+                        src={img}
+                        alt="product image" />
                     {/* <img className="w-2xs" src={img} alt="image of product" /> */}
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
+                    <p>Category: {category}</p>
+                    <p>Seller: {seller}</p>
+                    <p>Stock: {stock}</p>
                     <div className="flex justify-between gap-5">
                         <div className="badge badge-secondary">{ratings}</div>
                         <div className="rating">
@@ -67,9 +70,10 @@ const ProductDetail = () => {
                             <input type="radio" name="rating-1" className="mask mask-star" aria-label="4 star" />
                             <input type="radio" name="rating-1" className="mask mask-star" aria-label="5 star" />
                         </div>
-                        <p>{ratingsCount}</p>
                     </div>
-                    <span className="text-xl font-semibold">${price}.00</span>
+                    <p>Ratings count: {ratingsCount}</p>
+                    <p>Shipping: {shipping}</p>
+                    <span className="text-xl font-semibold">Price: ${price}.00</span>
                     <div className="card-actions">
                         <button onClick={() => handleAddToCart(productId)} className="btn btn-primary"
                         ><CiShoppingCart

@@ -68,7 +68,7 @@ const Products = () => {
     // }
 
     return (
-        <div className="my-10">
+        <div className="my-10 p-3">
 
             <div className="divider py-6">
                 <h3>FEATURED PRODUCTS: {products.length}</h3>
