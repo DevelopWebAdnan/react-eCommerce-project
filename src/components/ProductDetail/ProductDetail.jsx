@@ -37,15 +37,6 @@ const ProductDetail = () => {
     return (
         <div className="my-12">
             <h2>Product Details: {id}</h2>
-            {/* <img className="w-2xs" src={img} alt="image of product" />
-            <br /> */}
-            {/* <button
-                onClick={() => handleAddToCart(productId)}
-                className="btn btn-primary mr-4"
-            ><CiShoppingCart
-                className="text-2xl"
-            ></CiShoppingCart> Add to Cart
-            </button> */}
 
             <div className="card bg-blue-100 shadow-sm w-96 lg:w-2xl mx-auto">
                 {/* <figure className="h-64"> */}

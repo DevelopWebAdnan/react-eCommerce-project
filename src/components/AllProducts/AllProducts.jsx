@@ -6,7 +6,7 @@ const AllProducts = () => {
     console.log('allProducts:', allProducts);
 
     return (
-        <div className="my-10 p-3">
+        <div className="mb-10 p-3">
             <div className="divider py-6">
                 <h3>ALL FEATURED PRODUCTS: {allProducts.length}</h3>
             </div>

@@ -68,30 +68,28 @@ const Products = () => {
     // }
 
     return (
-        <div className="my-10 p-3">
+        <div className="p-3">
 
             <div className="divider py-6">
-                <h3>FEATURED PRODUCTS: {products.length}</h3>
+                <h3>FEATURED {category} PRODUCTS: {products.length}</h3>
             </div>
 
-            <p>{category} from products</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {
+                    products.map(product => <ProductCard
+                        key={product.id}
+                        product={product}
+                    // handleAddToCart={handleAddToCart}
+                    ></ProductCard>)
+                }
+            </div>
 
-            {/* <div className="flex gap-4"> */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {
-                        products.map(product => <ProductCard
-                            key={product.id}
-                            product={product}
-                        // handleAddToCart={handleAddToCart}
-                        ></ProductCard>)
-                    }
-                </div>
-
+            <div className="text-center mt-4">
                 <button
                     onClick={() => navigate('/allProducts')}
                     className="btn btn-warning"
                 >View All</button>
-            {/* </div> */}
+            </div>
 
         </div>
     );

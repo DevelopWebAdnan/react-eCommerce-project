@@ -8,7 +8,7 @@ const Categories = ({ categories }) => {
     // const {category} = useParams();
 
     return (
-        <div>
+        <div className="mt-4">
             <div role="tablist" className="tabs tabs-lift tabs-lg">
                 {
                     uniqueCategories.map(uniqueCategory =>

@@ -30,7 +30,7 @@ const addToLS = id => {
     const cart = getStoredCart();
     if (cart.includes(id)) {
         // already exists, do not add it
-        console.log(id, 'already exists in the cart');
+        return toast.error('This product already exists in the cart!');
     }
     else {
         cart.push(id);

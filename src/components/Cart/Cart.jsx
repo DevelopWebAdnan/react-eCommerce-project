@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getStoredCart, removeFromLS } from "../../utilities/localStorage";
 import { useLoaderData } from "react-router-dom";
+import Heading from "../Heading";
 
 
 // const Cart = ({ cart, handleRemoveFromCart }) => {
@@ -31,7 +32,7 @@ const Cart = () => {
         // console.log('savedCart:', savedCart);
         console.log('productsToBeAddedToCart:', productsToBeAddedToCart);
         setCart(productsToBeAddedToCart);
-       
+
     }, [loadedProducts])
 
     console.log('cart', cart);
@@ -60,8 +61,15 @@ const Cart = () => {
     return (
 
 
-        < div className="bg-blue-300 p-3" >
-            <h3 className="text-xl font-bold text-center my-3">Cart: {cart?.length}</h3>
+        < div className="bg-blue-300 p-3">
+            <Heading
+                title="Welcome to Dashboard"
+                subtitle="You can manage your previously added products to cart by removing the ones you wish to"
+            ></Heading>
+
+            <div className="divider py-6">
+                <h3>Cart PRODUCTS: {cart?.length}</h3>
+            </div>
 
             <details className="dropdown">
                 <summary className="btn m-1">
@@ -95,7 +103,7 @@ const Cart = () => {
                                         src={product?.img}></img> */}
                                 </figure>
                                 <div className="card-body">
-                                    <h2 className="card-title">{name}</h2>
+                                    <h2 className="card-title">{product?.name}</h2>
                                     <div className="flex justify-between gap-5">
                                         <div className="badge badge-secondary">{product?.ratings}</div>
                                         <div className="rating">
