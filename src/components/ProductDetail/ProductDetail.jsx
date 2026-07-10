@@ -1,6 +1,7 @@
 import { CiShoppingCart } from "react-icons/ci";
 import { useLoaderData, useParams } from "react-router-dom";
 import { addToLS } from "../../utilities/localStorage";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetail = () => {
 
@@ -36,6 +37,9 @@ const ProductDetail = () => {
 
     return (
         <div className="my-12">
+            <Helmet>
+                <title>Product Details: {id}</title>
+            </Helmet>
             <h2>Product Details: {id}</h2>
 
             <div className="card bg-blue-100 shadow-sm w-96 lg:w-2xl mx-auto">

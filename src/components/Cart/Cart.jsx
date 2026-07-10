@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getStoredCart, removeFromLS } from "../../utilities/localStorage";
 import { useLoaderData } from "react-router-dom";
 import Heading from "../Heading";
+import { Helmet } from "react-helmet-async";
 
 
 // const Cart = ({ cart, handleRemoveFromCart }) => {
@@ -62,6 +63,9 @@ const Cart = () => {
 
 
         < div className="bg-blue-300 p-3">
+            <Helmet>
+                <title>For Our Beauty | Cart</title>
+            </Helmet>
             <Heading
                 title="Welcome to Dashboard"
                 subtitle="You can manage your previously added products to cart by removing the ones you wish to"

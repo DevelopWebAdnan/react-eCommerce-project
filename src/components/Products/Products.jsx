@@ -87,7 +87,7 @@ const Products = () => {
             <div className="text-center mt-4">
                 <button
                     onClick={() => navigate('/allProducts')}
-                    className="btn btn-warning"
+                    className="btn btn-primary"
                 >View All</button>
             </div>
 

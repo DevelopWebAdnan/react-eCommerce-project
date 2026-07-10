@@ -13,6 +13,7 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart';
 import { ToastContainer } from 'react-toastify';
 import AllProducts from './components/AllProducts/AllProducts';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +61,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer></ToastContainer>
+    <HelmetProvider>
+      <RouterProvider router={router} />
+      <ToastContainer></ToastContainer>
+    </HelmetProvider>
   </StrictMode>,
 )
