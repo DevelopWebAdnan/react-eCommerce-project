@@ -2,8 +2,9 @@ import logo from '../../assets/shopping-cart/shopping-cart-32.png';
 
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 // import Link from "../Link/Link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Navbar = () => {
 
@@ -47,27 +48,32 @@ const Navbar = () => {
     //     },
     // ];
 
+    const {name} = useContext(AuthContext);
+
     const links = <>
-        <li className='ml-10 px-1'><NavLink 
-        className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
-        to="/"
+        <li className='ml-10 px-1'><NavLink
+            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
+            to="/"
         >Home</NavLink>
         </li>
-        <li className='ml-10 px-1'><NavLink 
-         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
-         to="/allProducts"
-         >All Products</NavLink>
-         </li>
-        <li className='ml-10 px-1'><NavLink 
-         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
-         to="/cart"
-         >Cart</NavLink>
-         </li>
-        <li className='ml-10 px-1'><NavLink 
-         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
-         to="/login"
-         >Login</NavLink>
-         </li>
+        <li className='ml-10 px-1'><NavLink
+            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
+            to="/allProducts"
+        >All Products</NavLink>
+        </li>
+        <li className='ml-10 px-1'><NavLink
+            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
+            to="/cart"
+        >Cart</NavLink>
+        </li>
+        <li className='ml-10 px-1'><NavLink
+            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
+            to="/login"
+        >Login</NavLink>
+        </li>
+        <li className='ml-10 px-1'>
+            <a className="btn">{name}</a>
+        </li>
     </>
 
     return (
@@ -85,15 +91,17 @@ const Navbar = () => {
                     } */}
                     {links}
                 </ul>
+
                 {/* <div> */}
                 <Link to="/" className="text-xl">
-                <div className='flex gap-2'>
-                    <img src={logo} alt="logo" />
-                    <span>FOR OUR BEAUTY</span>
-                </div>
+                    <div className='flex gap-2'>
+                        <img src={logo} alt="logo" />
+                        <span>FOR OUR BEAUTY</span>
+                    </div>
                 </Link>
                 {/* </div> */}
             </nav>
+
             {/* <ul className="md:flex md:gap-10 text-xl">
                 <li className="hover:text-primary transition-colors ease-in-out duration-300"><a href="#">Home</a></li>
                 <li className="hover:text-primary transition-colors ease-in-out duration-300"><a href="#">About Us</a></li>
