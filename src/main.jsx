@@ -14,6 +14,8 @@ import Cart from './components/Cart/Cart';
 import { ToastContainer } from 'react-toastify';
 import AllProducts from './components/AllProducts/AllProducts';
 import { HelmetProvider } from 'react-helmet-async';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
         path: 'cart',
         element: <Cart></Cart>,
         loader: () => fetch('/beautyStore.json')
+      },
+      {
+        path: 'login',
+        element: <Login></Login>
+      },
+      {
+        path: 'register',
+        element: <Register></Register>
       }
     ]
   },

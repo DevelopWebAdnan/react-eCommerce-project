@@ -63,6 +63,11 @@ const Navbar = () => {
          to="/cart"
          >Cart</NavLink>
          </li>
+        <li className='ml-10 px-1'><NavLink 
+         className={({isActive}) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`} 
+         to="/login"
+         >Login</NavLink>
+         </li>
     </>
 
     return (
