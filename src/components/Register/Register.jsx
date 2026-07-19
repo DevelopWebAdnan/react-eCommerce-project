@@ -1,10 +1,39 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+
+    const [success, setSuccess] = useState(false);
+    // const [errors, setErrors] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
+    // const [userPassword, setUserPassword] = useState("");
+
+    // password validation with messages
+    // const validatePassword = (value) => {
+    //     const newErrors = [];
+
+    //     if (value.length < 6) {
+    //         newErrors.push("Must be at least 6 characters long.");
+    //     }
+    //     if (!/a-z/.test(value)) {
+    //         newErrors.push("Must contain at least one lowercase character.");
+    //     }
+    //     if (!/A-Z/.test(value)) {
+    //         newErrors.push("Must contain at least one uppercase letter.");
+    //     }
+    //     if (!/\d/.test(value)) {
+    //         newErrors.push("Must contain at least one number.");
+    //     }
+    //     if (!/[@$!%&^*]/.test(value)) {
+    //         newErrors.push("Must contain at least one special character (!@#$%^&*)");
+    //     }
+
+    //     setErrors(newErrors);
+
+    // };
 
     const handleRegister = e => {
         e.preventDefault();
@@ -15,13 +44,31 @@ const Register = () => {
 
         console.log(name, email, password);
 
+        // At least 6 character, 1 uppercase, 1 number
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+            setErrorMessage("Password must be at least 6 characters long and contain at least one uppercase letter and one number."
+            );
+            return;
+        }
+
+        // reset error and status
+        setErrorMessage("");
+        setSuccess(false);
+        // setUserPassword(password);
+        // validatePassword(password);
+
         // create user
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                setSuccess(true);
             })
             .catch(error => {
                 console.log('ERROR', error.message);
+                setErrorMessage(error.message);
+                setSuccess(false);
             })
     }
 
@@ -45,6 +92,17 @@ const Register = () => {
                                 <button className="btn btn-primary mt-4">Register</button>
                             </fieldset>
                         </form>
+                        {/* {errors.length > 0 ? (
+                            <ul style={{ color: "red", fontSize: "14px" }}>
+                                {errors.map((err, index) => (
+                                    <li key={index}>{err}</li>
+                                ))}
+                            </ul>
+                        ) : userPassword.length > 0 ? (
+                            <p style={{ color: 'green' }}>Strong password!</p>
+                        ) : null} */}
+                        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                        {success && <p className="text-green-600">User sign up is successful.</p>}
                         <p>Already have an account? Please <Link to="/login">Login</Link>.</p>
                     </div>
                 </div>
