@@ -17,6 +17,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AuthProvider from './providers/AuthProvider';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart',
-        element: <Cart></Cart>,
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>,
         loader: () => fetch('/beautyStore.json')
       },
       {

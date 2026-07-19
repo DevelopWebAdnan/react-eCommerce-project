@@ -51,7 +51,7 @@ const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
 
     console.log(user);
-    
+
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
@@ -71,12 +71,13 @@ const Navbar = () => {
             to="/allProducts"
         >All Products</NavLink>
         </li>
-        <li className='ml-10 px-1'><NavLink
-            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
-            to="/cart"
-        >Cart</NavLink>
-        </li>
-
+        {
+            user && <li className='ml-10 px-1'><NavLink
+                className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
+                to="/cart"
+            >Cart</NavLink>
+            </li>
+        }
         <div className='ml-10 px-1'>
             {
                 user ? <>
