@@ -48,7 +48,17 @@ const Navbar = () => {
     //     },
     // ];
 
-    const {name} = useContext(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
+
+    console.log(user);
+    
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log('Signed out user successfully');
+            })
+            .catch(error => console.log('ERROR', error.message))
+    };
 
     const links = <>
         <li className='ml-10 px-1'><NavLink
@@ -66,14 +76,17 @@ const Navbar = () => {
             to="/cart"
         >Cart</NavLink>
         </li>
-        <li className='ml-10 px-1'><NavLink
-            className={({ isActive }) => `font-bold ${isActive} ? 'text-primary' : hover:text-primary`}
-            to="/login"
-        >Login</NavLink>
-        </li>
-        <li className='ml-10 px-1'>
-            <a className="btn">{name}</a>
-        </li>
+
+        <div className='ml-10 px-1'>
+            {
+                user ? <>
+                    <span>{user.email}</span>
+                    <a onClick={handleSignOut} className="btn">Log Out</a>
+                </>
+                    :
+                    <Link to="/login">Login</Link>
+            }
+        </div>
     </>
 
     return (
