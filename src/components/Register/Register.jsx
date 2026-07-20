@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa";
 
 const Register = () => {
 
-    const { createUser, sendVerification } = useContext(AuthContext);
+    const { createUser, sendVerification, updateUser } = useContext(AuthContext);
 
     const [success, setSuccess] = useState(false);
     // const [errors, setErrors] = useState([]);
@@ -41,11 +41,12 @@ const Register = () => {
         e.preventDefault();
 
         const name = e.target.name.value;
+        const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const terms = e.target.terms.checked;
 
-        console.log(name, email, password, terms);
+        console.log(name, photo, email, password, terms);
 
         if (!terms) {
             setErrorMessage('Please accept our terms and conditions.');
@@ -82,6 +83,20 @@ const Register = () => {
                         alert("Email verification sent! Please check your email, including spam email.");
                     });
                 setSuccess(true);
+
+                // update user information
+                const userInfo = {
+                    displayName: name,
+                    photoURL: photo
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        console.log('Profile updated!')
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        setErrorMessage(error.message);
+                    })
             })
             .catch(error => {
                 console.log('ERROR', error.message);
@@ -101,7 +116,9 @@ const Register = () => {
                         <form onSubmit={handleRegister}>
                             <fieldset className="fieldset">
                                 <label className="label">Name</label>
-                                <input type="text" name="name" className="input" placeholder="Name" />
+                                <input type="text" name="name" className="input" placeholder="Name" required />
+                                <label className="label">Photo URL</label>
+                                <input type="text" name="photo" className="input" placeholder="Photo URL" required />
                                 <label className="label">Email</label>
                                 <input type="email" name="email" className="input" placeholder="Email" required />
                                 <div className="relative">
