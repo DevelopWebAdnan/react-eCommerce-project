@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa";
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, sendVerification } = useContext(AuthContext);
 
     const [success, setSuccess] = useState(false);
     // const [errors, setErrors] = useState([]);
@@ -71,6 +71,16 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+
+                // send verification email address
+                // sendEmailVerification(auth.currentUser)
+                // sendEmailVerification(result.user.email)
+                // sendEmailVerification(user.email)
+
+                sendVerification()
+                    .then(() => {
+                        alert("Email verification sent! Please check your email, including spam email.");
+                    });
                 setSuccess(true);
             })
             .catch(error => {
