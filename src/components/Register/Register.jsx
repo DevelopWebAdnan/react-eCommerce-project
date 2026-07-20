@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaEye } from "react-icons/fa";
 
 const Register = () => {
 
@@ -10,6 +11,7 @@ const Register = () => {
     // const [errors, setErrors] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     // const [userPassword, setUserPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     // password validation with messages
     // const validatePassword = (value) => {
@@ -41,8 +43,14 @@ const Register = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const terms = e.target.terms.checked;
 
-        console.log(name, email, password);
+        console.log(name, email, password, terms);
+
+        if (!terms) {
+            setErrorMessage('Please accept our terms and conditions.');
+            return;
+        }
 
         // At least 6 character, 1 uppercase, 1 number
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
@@ -85,10 +93,30 @@ const Register = () => {
                                 <label className="label">Name</label>
                                 <input type="text" name="name" className="input" placeholder="Name" />
                                 <label className="label">Email</label>
-                                <input type="email" name="email" className="input" placeholder="Email" />
-                                <label className="label">Password</label>
-                                <input type="password" name="password" className="input" placeholder="Password" />
-
+                                <input type="email" name="email" className="input" placeholder="Email" required />
+                                <div className="relative">
+                                    <label className="label">Password</label>
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        name="password"
+                                        className="input"
+                                        placeholder="Password" required />
+                                    <div
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="btn btn-xs absolute right-2 bottom-2">
+                                        <FaEye></FaEye>
+                                    </div>
+                                </div>
+                                <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+                                    {/* <legend className="fieldset-legend">Accept Our Terms and Conditions.</legend> */}
+                                    <label className="label">
+                                        <input
+                                            name="terms"
+                                            type="checkbox"
+                                            className="checkbox" />
+                                        Accept Our Terms And Conditions.
+                                    </label>
+                                </fieldset>
                                 <button className="btn btn-primary mt-4">Register</button>
                             </fieldset>
                         </form>
