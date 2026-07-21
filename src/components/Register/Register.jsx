@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye } from "react-icons/fa";
 
 const Register = () => {
 
+    const navigate = useNavigate();
     const { createUser, sendVerification, updateUser } = useContext(AuthContext);
 
     const [success, setSuccess] = useState(false);
@@ -80,9 +81,11 @@ const Register = () => {
 
                 sendVerification()
                     .then(() => {
-                        alert("Email verification sent! Please check your email, including spam email.");
+                        alert("Email verification sent! Please check your email.");
                     });
                 setSuccess(true);
+                e.target.reset();
+                navigate("/");
 
                 // update user information
                 const userInfo = {

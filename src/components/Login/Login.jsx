@@ -1,10 +1,11 @@
 import { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
 
-    const { signInUser, sendPasswordReset } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { signInUser, sendPasswordReset, signInWithGoogle } = useContext(AuthContext);
 
     const emailRef = useRef();
 
@@ -27,7 +28,7 @@ const Login = () => {
         else {
             sendPasswordReset(email)
                 .then(() => {
-                    alert("Password reset email sent! Please check your email, including spam email.");
+                    alert("Password reset email sent! Please check your email.");
                 })
         }
     }
@@ -50,10 +51,12 @@ const Login = () => {
                 console.log(result.user);
 
                 if (!result.user.emailVerified) {
-                    setLoginError("Please verify your email address. Check your spam email if you do not find it in the inbox.");
+                    setLoginError("Please verify your email address.");
                 }
                 else {
                     setSuccess(true);
+                    e.target.reset();
+                    navigate("/");
                 }
             })
             .catch(error => {
@@ -61,6 +64,15 @@ const Login = () => {
                 setLoginError(error.message);
             });
     }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate("/");
+            })
+            .catch(error => console.log(error.message));
+    };
 
     return (
         <div className="hero bg-blue-200 min-h-screen">
@@ -87,6 +99,7 @@ const Login = () => {
                             loginError && <p className="text-red-600">{loginError}</p>
                         }
                         <p>New to this website? Please <Link to="/register">Register</Link></p>
+                        <button onClick={handleGoogleSignIn} className="btn btn-ghost">Google</button>
                     </div>
                 </div>
             </div>
