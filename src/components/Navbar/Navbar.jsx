@@ -1,5 +1,5 @@
 import logo from '../../assets/shopping-cart/shopping-cart-32.png';
-
+import userIcon from '../../assets/user.png';
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 // import Link from "../Link/Link";
 import { useContext, useState } from "react";
@@ -80,19 +80,25 @@ const Navbar = () => {
         }
         <div className='ml-10 px-1'>
             {
-                user ? <>
+                user ? <div>
                     <span>{user.email}</span>
+                    {/* <img src={userIcon} alt="user icon" /> */}
                     <a onClick={handleSignOut} className="btn">Log Out</a>
-                </>
+                </div>
                     :
-                    <Link to="/login">Login</Link>
+                    <div className='flex gap-2 items-center'>
+                        <div>
+                            <img src={userIcon} alt="user icon" />
+                        </div>
+                        <Link to="/login">Login</Link>
+                    </div>
             }
         </div>
     </>
 
     return (
         <div className="p-2 h-16">
-            <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100/30 backdrop-blur-xl fixed z-50'>
+            <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100/30 backdrop-blur-xl fixed z-50 items-center'>
                 <div className="md:hidden text-2xl btn" onClick={() => setOpen(!open)}>
                     {
                         open === true ?
@@ -108,7 +114,7 @@ const Navbar = () => {
 
                 {/* <div> */}
                 <Link to="/" className="text-xl">
-                    <div className='flex gap-2'>
+                    <div className='flex gap-2 items-center'>
                         <img src={logo} alt="logo" />
                         <span>FOR OUR BEAUTY</span>
                     </div>
