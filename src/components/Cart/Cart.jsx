@@ -64,7 +64,7 @@ const Cart = () => {
 
         < div className="bg-blue-300 p-3">
             <Helmet>
-                <title>For Our Beauty | Cart</title>
+                <title>For Our Beauty | My Cart</title>
             </Helmet>
             <Heading
                 title="Welcome to Dashboard"
@@ -72,7 +72,7 @@ const Cart = () => {
             ></Heading>
 
             <div className="divider py-6">
-                <h3>Cart PRODUCTS: {cart?.length}</h3>
+                <h3>My Cart PRODUCTS: {cart?.length}</h3>
             </div>
 
             <details className="dropdown">

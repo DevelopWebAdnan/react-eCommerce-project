@@ -2,6 +2,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { useLoaderData, useParams } from "react-router-dom";
 import { addToLS } from "../../utilities/localStorage";
 import { Helmet } from "react-helmet-async";
+import Modal from "../Modal/Modal";
 
 const ProductDetail = () => {
 
@@ -32,6 +33,7 @@ const ProductDetail = () => {
     const handleAddToCart = productId => {
         // const newCart = [...cart, productId];
         // setCart(newCart);
+
         addToLS(productId);
     }
 
@@ -70,11 +72,16 @@ const ProductDetail = () => {
                     <p>Shipping: {shipping}</p>
                     <span className="text-xl font-semibold">Price: ${price}.00</span>
                     <div className="card-actions">
+                        {/* Open the modal using document.getElementById('ID').showModal() method */}
+                        <button
+                            className="btn"
+                            onClick={() => document.getElementById('my_modal_5').showModal()}
+                        >About me</button>
+                        <Modal></Modal>
                         <button onClick={() => handleAddToCart(productId)} className="btn btn-primary"
                         ><CiShoppingCart
                             className="text-2xl"
-                        ></CiShoppingCart> ADD TO CART
-                        </button>
+                        ></CiShoppingCart> ADD TO CART</button>
                     </div>
                 </div>
             </div>

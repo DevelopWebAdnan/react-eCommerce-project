@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'productDetail/:id',
-        element: <ProductDetail></ProductDetail>,
+        element: <PrivateRoute><ProductDetail></ProductDetail></PrivateRoute>,
         loader: () => fetch('/beautyStore.json')
       },
       // {
