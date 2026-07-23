@@ -1,9 +1,11 @@
 import { useContext, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
 
+    const location = useLocation();
+    console.log(location);
     const navigate = useNavigate();
     const { signInUser, sendPasswordReset, signInWithGoogle } = useContext(AuthContext);
 
@@ -56,7 +58,7 @@ const Login = () => {
                 else {
                     setSuccess(true);
                     e.target.reset();
-                    navigate("/");
+                    navigate(location?.state ? location.state : "/");
                 }
             })
             .catch(error => {

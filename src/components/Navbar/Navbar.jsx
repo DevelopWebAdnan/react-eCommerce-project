@@ -80,9 +80,12 @@ const Navbar = () => {
         }
         <div className='ml-10 px-1'>
             {
-                user ? <div>
-                    <span>{user.email}</span>
-                    {/* <img src={userIcon} alt="user icon" /> */}
+                user ? <div className='flex gap-2 items-center'>
+                    <div>
+                        {/* <span>{user.email}</span> */}
+                        <img className='w-10 md:w-16 rounded-full' src={user?.photoURL} alt="user photo" />
+                        <p>{user.displayName}</p>
+                    </div>
                     <a onClick={handleSignOut} className="btn">Log Out</a>
                 </div>
                     :
@@ -97,7 +100,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="p-2 h-16">
+        <div className="p-2 h-28">
             <nav className='flex md:flex-row-reverse md:justify-between bg-blue-100/30 backdrop-blur-xl fixed z-50 items-center'>
                 <div className="md:hidden text-2xl btn" onClick={() => setOpen(!open)}>
                     {
