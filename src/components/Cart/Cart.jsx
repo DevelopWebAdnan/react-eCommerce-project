@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getStoredCart, removeFromLS } from "../../utilities/localStorage";
 import { useLoaderData } from "react-router-dom";
 import Heading from "../Heading";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 // const Cart = ({ cart, handleRemoveFromCart }) => {
@@ -12,6 +13,7 @@ const Cart = () => {
     console.log('Loaded products:', loadedProducts);
 
     const [cart, setCart] = useState([]);
+    const {user} = useContext(AuthContext);
     const [sort, setSort] = useState('');
 
     // load cart from local storage
@@ -20,21 +22,32 @@ const Cart = () => {
         // if (loadedProducts.length) {
         const getCart = getStoredCart();
         console.log('getCart:', getCart);
+        const emailMatchingCartProducts = getCart.filter(cartProduct => cartProduct.email === user.email);
+        console.log('emailMatchingCartProducts:', emailMatchingCartProducts);
+        const emailMatchingCartProductIds = emailMatchingCartProducts.map(emailMatchingCartProduct => emailMatchingCartProduct.productId);
+        console.log('emailMatchingCartProductIds:', emailMatchingCartProductIds);
         // const savedCart = [];
-        // for (const cartProductId of getCart) {
-        // console.log('cartProductId:', cartProductId);
+        // for (const cartProduct of getCart) {
+        // for (const emailMatchingCartProductId of emailMatchingCartProductIds) {
+        // console.log('emailMatchingCartProductId:', emailMatchingCartProductId);
         // const productsToBeAddedToCart = loadedProducts.find(loadedProduct => loadedProduct.id === cartProductId);
-        const productsToBeAddedToCart = loadedProducts.filter(loadedProduct => getCart.includes(loadedProduct.id));
-        // console.log('productsToBeAddedToCart: ', productsToBeAddedToCart);
+        // const productsToBeAddedToCart = loadedProducts.filter(loadedProduct => getCart.includes(loadedProduct.id));
+        
+        // const idAndEmailMatchingCartProduct = loadedProducts.filter(loadedProduct => emailMatchingCartProductId === loadedProduct.id);
+        const idAndEmailMatchingCartProducts = loadedProducts.filter(loadedProduct => emailMatchingCartProductIds.includes(loadedProduct.id));
+        console.log('idAndEmailMatchingCartProducts: ', idAndEmailMatchingCartProducts);
+        // const productsToBeAddedToCart = emailMatchingCartProducts.filter(emailMatchingCartProduct => emailMatchingCartProduct.productId === productsWithMatchingId.email);
         // if (productsToBeAddedToCart) {
-        //     savedCart.push(productsToBeAddedToCart);
+            // savedCart.push(productsToBeAddedToCart);
+            // savedCart.push(idAndEmailMatchingCartProduct);
         // }
+        
+        // console.log('productsToBeAddedToCart:', productsToBeAddedToCart);
+        setCart(idAndEmailMatchingCartProducts);
         // }
         // console.log('savedCart:', savedCart);
-        console.log('productsToBeAddedToCart:', productsToBeAddedToCart);
-        setCart(productsToBeAddedToCart);
 
-    }, [loadedProducts])
+    }, [loadedProducts, user.email])
 
     console.log('cart', cart);
 

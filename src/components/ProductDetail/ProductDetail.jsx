@@ -3,12 +3,15 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { addToLS } from "../../utilities/localStorage";
 import { Helmet } from "react-helmet-async";
 import Modal from "../Modal/Modal";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ProductDetail = () => {
 
     const data = useLoaderData();
     const { id } = useParams();
     const productId = parseInt(id);
+    const {user} = useContext(AuthContext);
 
     const product = data.find(product => product.id === productId);
     // console.log(data, typeof(product.id), typeof(id), typeof(productId));
@@ -34,7 +37,11 @@ const ProductDetail = () => {
         // const newCart = [...cart, productId];
         // setCart(newCart);
 
-        addToLS(productId);
+        const cartItem = {
+            email: user?.email,
+            productId
+        }
+        addToLS(cartItem);
     }
 
     return (
